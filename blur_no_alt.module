@@ -1,0 +1,63 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Blur No-Alt module.
+ */
+
+use Drupal\editor\Entity\Editor;
+use Drupal\blur_no_alt\BlurNoAltAlter;
+
+/**
+ * Implements hook_ckeditor_css_alter().
+ */
+function blur_no_alt_ckeditor_css_alter(array &$css, Editor $editor) {
+  BlurNoAltAlter::ckeditorCssAlter($css, $editor);
+}
+
+/*
+ * Implements hook_form_BASE_FORM_ID_alter().
+ *
+ */
+function blur_no_alt_form_node_form_alter(&$form, &$form_state) {
+  $config = \Drupal::config('blur_no_alt.settings');
+  $messageConfig = !empty($config->get('enable_message')) ? $config->get('enable_message') : "empty";
+  if ($messageConfig == 'show_message') {
+    $form['#attached']['library'][] = 'blur_no_alt/admin';
+    $form['title']['#prefix'] = "<span class='no-alt-admin-message'>ℹ Images without alt text will be blurred. Add alt text or the noalt CSS class to repair.</span>";
+  } else {
+    $form['title']['#prefix'] = "<h2><br><strong>{$messageConfig}</strong></h2>";
+  }
+}
+
+/*
+ * Implements hook_form_FORM_ID_alter() for media-image-edit-form.
+ *
+ */
+function blur_no_alt_form_media_image_edit_form_alter(&$form, &$form_state) {
+  $config = \Drupal::config('blur_no_alt.settings');
+  $messageConfig = !empty($config->get('enable_message')) ? $config->get('enable_message') : "empty";
+  if ($messageConfig == 'show_message') {
+    $form['#attached']['library'][] = 'blur_no_alt/admin';
+    $form['#prefix'] = "<span class='no-alt-admin-message'>ℹ Images without alt text will be blurred. Add alt text or the noalt CSS class to repair.</span>";
+  } else {
+    $form['#prefix'] = "<h2><br><strong>{$messageConfig}</strong></h2>";
+  }
+}
+
+/*
+ * Implements hook_form_FORM_ID_alter() for media-library modal dialog form.
+ *
+ */
+function blur_no_alt_form_media_library_add_form_alter(array &$form, &$form_state) {
+  if(isset($form['#attributes']['data-input'])) {
+    $config = \Drupal::config('blur_no_alt.settings');
+    $messageConfig = !empty($config->get('enable_message')) ? $config->get('enable_message') : "empty";
+    if ($messageConfig == 'show_message') {
+      $form['#attached']['library'][] = 'blur_no_alt/admin';
+      $form['#prefix'] = "<span class='no-alt-admin-message'>ℹ Images without alt text will be blurred. Add alt text or the noalt CSS class to repair.</span>";
+    } else {
+      $form['#prefix'] = "<h2><br><strong>{$messageConfig}</strong></h2>";
+    }
+  }
+}

@@ -1,0 +1,7 @@
+blur_no_alt.settings_form:
+  path: '/admin/config/system/blur-no-alt'
+  defaults:
+    _title: 'Blur No-Alt settings'
+    _form: 'Drupal\blur_no_alt\Form\SettingsForm'
+  requirements:
+    _permission: 'administer blur_no_alt configuration'

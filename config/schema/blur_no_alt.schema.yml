@@ -1,0 +1,8 @@
+# Schema for the configuration files of the Blur No-Alt module.
+blur_no_alt.settings:
+  type: config_object
+  label: 'Blur No-Alt settings'
+  mapping:
+    example:
+      type: string
+      label: 'Example'

@@ -1,0 +1,6 @@
+blur_no_alt.settings_form:
+  title: 'Blur No-Alt'
+  description: 'Configure Blur No-Alt.'
+  parent: system.admin_config_system
+  route_name: blur_no_alt.settings_form
+  weight: 10

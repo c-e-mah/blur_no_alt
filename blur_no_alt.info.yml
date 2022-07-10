@@ -1,0 +1,12 @@
+name: Blur No-Alt
+type: module
+description: Blur images in the admin editor interface if they do not have alt text. Socially engineer Drupal content developers to write alt text for images. Based on the WordPress module of the same name by Kerri Hicks.
+package: Custom
+version: 0.3
+dependencies:
+  - drupal:filter
+  - drupal:media
+core_version_requirement: ^9 || ^10
+
+ckeditor_stylesheets:
+  - css/blur_no-alt.ckeditor.css

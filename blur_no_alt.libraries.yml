@@ -1,0 +1,14 @@
+preview:
+  css:
+    component:
+      css/blur_no-alt.ckeditor.css: {}
+
+#media:
+#  css:
+#    component:
+#      css/components/blur_no-alt.media.css: {}
+
+admin:
+  css:
+    theme:
+      css/blur_no-alt.admin.css: {}

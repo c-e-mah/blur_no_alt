@@ -1,0 +1,24 @@
+/**
+ * @file
+ * Provides CKEditor overrides.
+ */
+
+img:is([alt=""],
+[alt*='.jpg'],
+[alt*='.png'],
+[alt*='.gif']) {
+  clip-path: inset(0);
+  filter: blur(8px);
+  outline: 10px solid red;
+  outline-offset: -10px;
+  transition: filter .125s, outline .125s;
+}
+
+img:is([alt=""],
+[alt*='.jpg'],
+[alt*='.png'],
+[alt*='.gif']):hover,
+img.noalt {
+  filter: blur(0px);
+  outline: 0;
+}
